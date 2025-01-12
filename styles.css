@@ -1,0 +1,206 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    background-color: #ffffff;
+    background: linear-gradient(to bottom, #ffffff, #f0f4f8);
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps the gradient consistent across different resolutions */
+    background-size: cover; /* Ensures it adjusts dynamically to any screen size */
+    color: #333;
+}
+
+html, body {
+    height: 100%; /* Ensure the body and html fill the entire viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack header, content, and footer vertically */
+}
+
+/* Header Styling */
+header {
+    position: relative; /* Initially positioned normally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #033c7b;
+    color: white;
+    width: 100%;
+    z-index: 999; /* Ensures it appears above content */
+    padding: 10px 0;
+    transition: position 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+header.sticky {
+    position: fixed; /* Sticks the header at the top */
+    top: 0;
+}
+
+header nav {
+    flex: 1; /* Allow the nav to grow and center itself */
+    text-align: center; /* Center-align the navigation text */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block; /* Ensure inline layout */
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    background-color: #002f55;
+}
+
+/* Main Container Styling */
+.container {
+    flex: 1;
+    max-width: 1200px; /* Optimal width for readability */
+    margin: 30px auto; /* Center container and add spacing */
+    background-color: #f7f7f7; /* Slightly darker white for emphasis */
+    padding: 20px 40px; /* Inner padding for content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    border-radius: 10px; /* Rounded corners for a modern look */
+}
+
+/* Hero Section Styling */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Logo Section Styling */
+.logo-section {
+    text-align: center;
+    background-color: #033c7b; /* Static background color */
+    padding: 20px 0;
+    position: relative; /* Prevents it from interfering with sticky behavior */
+    z-index: 1000;
+}
+
+.logo {
+    max-width: 400px; /* Initial size */
+    animation: fade-in 1.5s ease-in-out; /* Fade in animation */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth shrinking and fading */
+}
+
+.logo.shrink {
+    transform: scale(0.7); /* Shrinks the logo */
+    opacity: 0; /* Fades out the logo */
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #91c788;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #76a971;
+}
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #033c7b; 
+    color: white;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.gallery {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.gallery h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.image-grid img {
+    max-width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem;
+    }
+
+    .image-grid img {
+        max-width: 100%;
+    }
+}
+
+
+
+/* Animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

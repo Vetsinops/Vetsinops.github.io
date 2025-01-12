@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veteran Success</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-section">
+        <img src="logo-placeholder.png" alt="Logo" class="logo">
+    </div>
+    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#join">Join Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <section class="hero">
+                <h1>Dedicated to Connecting Veterans</h1>
+                <p><i>Be part of a growing community of veterans, accessing resources, mentorship, and opportunities for success.</i></p>
+                <a href="https://discord.gg/h4aEq2hc" class="cta-button">Join Our Community</a>
+            </section>
+
+            <section class="gallery">
+                <h2>Our Impact</h2>
+                <div class="image-grid">
+                    <img src="placeholder1.jpeg" alt="Veterans connecting">
+                    <img src="placeholder2.jpeg" alt="Veterans shaking hands">
+                    <img src="placeholder3.jpeg" alt="Veterans in leadership">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Social Links | Contact info</p>
+    </footer>
+    <script>
+        const logo = document.querySelector('.logo');
+        const logoSection = document.querySelector('.logo-section');
+        const header = document.querySelector('header');
+        const container = document.querySelector('.container');
+    
+        // Create a placeholder for the header
+        const headerPlaceholder = document.createElement('div');
+        headerPlaceholder.style.height = `${header.offsetHeight}px`;
+        headerPlaceholder.style.display = 'none'; // Initially hidden
+        header.parentNode.insertBefore(headerPlaceholder, header);
+
+        const originalMarginTop = window.getComputedStyle(container).marginTop;
+    
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+    
+            // Get the total scrollable distance for the logo section
+            const logoSectionHeight = logoSection.offsetHeight;
+    
+            // Calculate the progress of the scroll relative to the logo section
+            const progress = Math.min(scrollY / logoSectionHeight, 1); // Clamps progress between 0 and 1
+    
+            // Gradually adjust max-width
+            const initialWidth = 400; // Initial max-width in px
+            const finalWidth = 200;  // Final max-width in px
+            const currentWidth = initialWidth - (initialWidth - finalWidth) * progress;
+            logo.style.maxWidth = `${currentWidth}px`; // Gradually shrink max-width
+    
+            // Make header sticky after the logo section scrolls out of view
+            const logoSectionBottom = logoSection.offsetTop + logoSection.offsetHeight;
+            if (scrollY > logoSectionBottom) {
+                header.classList.add('sticky');
+                headerPlaceholder.style.display = 'block'; // Show the spacer
+                container.style.marginTop = `${header.offsetHeight + 30}px`; // Maintain spacing below sticky header
+            } else {
+                header.classList.remove('sticky');
+                headerPlaceholder.style.display = 'none'; // Hide the spacer
+                container.style.marginTop = originalMarginTop; // Reset spacing to the original margin
+            }
+        });
+    </script>
+    
+    
+      
+</body>
+</html>
